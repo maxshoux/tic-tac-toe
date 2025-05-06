@@ -1,0 +1,199 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
+        
+
+        html, body {
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+        }
+        
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle at 10% 20%, #2b2d42 0%, #1a1a2e 90%);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .xo-card {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: cardEntrance 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+        
+
+        .xo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 65%, 
+                rgba(212, 175, 55, 0.1) 65%, 
+                rgba(212, 175, 55, 0.1) 70%, 
+                transparent 70%);
+            z-index: -1;
+        }
+
+        .xo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .xo-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, #d4af37, #f5d020);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+        }
+
+        .xo-icon {
+            font-size: 1.8rem;
+            color: #d4af37;
+        }
+
+        .xo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .xo-cell {
+            aspect-ratio: 1;
+            background: rgba(26, 26, 46, 0.5);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .xo-cell:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .xo-cell.x {
+            color: #4cc9f0;
+        }
+
+        .xo-cell.o {
+            color: #f72585;
+        }
+
+        .xo-status {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            min-height: 24px;
+        }
+
+        .xo-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .xo-btn {
+            padding: 8px 20px;
+            background: linear-gradient(45deg, #d4af37, #f5d020);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .xo-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(212, 175, 55, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .winning-cell {
+            animation: pulse 1s infinite;
+            background: rgba(212, 175, 55, 0.2);
+        }
+ 
+        @media (max-width: 600px) {
+            .profile-card {
+                padding: 30px 20px;
+            }
+           }
